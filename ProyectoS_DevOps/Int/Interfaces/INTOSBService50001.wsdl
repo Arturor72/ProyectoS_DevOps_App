@@ -1,0 +1,38 @@
+<wsdl:definitions targetNamespace="http://integracion.osb.telefonica.com/services/50001" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://integracion.osb.telefonica.com/services/50001" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <wsdl:types>
+      <xsd:schema>
+         <xsd:import namespace="http://integracion.osb.telefonica.com/services/50001" schemaLocation="INTOSBService50001.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="Operation50001Request">
+      <wsdl:part element="tns:traerInfoPersonaRequest" name="Operation50001Request"/>
+   </wsdl:message>
+   <wsdl:message name="Operation50001Response">
+      <wsdl:part element="tns:traerInfoPersonaResponse" name="Operation50001Response"/>
+
+   </wsdl:message>
+   <wsdl:portType name="INTOSBService50001">
+      <wsdl:operation name="traerInfoPersona">
+         <wsdl:input message="tns:Operation50001Request"/>
+         <wsdl:output message="tns:Operation50001Response"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="INTOSBService50001HTTP_Binding" type="tns:INTOSBService50001">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="traerInfoPersona">
+         <soap:operation soapAction="http://integracion.osb.telefonica.com/services/50001/Operacion50001"/>
+         <wsdl:input>
+            <soap:body parts="Operation50001Request" use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body parts="Operation50001Response" use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="INTOSBService50001">
+      <wsdl:port binding="tns:INTOSBService50001HTTP_Binding" name="INTOSBService50001HTTP_Port">
+         <soap:address location="http://servertdp:7080/INT/OSB/SRV/Servicio50001"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

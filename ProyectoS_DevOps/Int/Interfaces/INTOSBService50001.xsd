@@ -1,0 +1,51 @@
+<xsd:schema targetNamespace="http://integracion.osb.telefonica.com/services/50001" xmlns:tns="http://integracion.osb.telefonica.com/services/50001" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://integracion.osb.telefonica.com">
+   
+   <xsd:element name="traerInfoPersonaRequest" type="tns:MENSAJEREQ_Type"/>
+   
+   <xsd:complexType name="MENSAJEREQ_Type">
+      <xsd:sequence>
+      	 <xsd:element name="idRemedy" type="tns:IdRemedy_Type" />
+      	 <xsd:element name="email" type="tns:Email_Type"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+   <xsd:element name="traerInfoPersonaResponse" type="tns:MENSAJERES_Type"/>
+   
+   <xsd:complexType name="MENSAJERES_Type">
+      <xsd:sequence>
+         <xsd:element name="empresa" type="tns:Empresa_Type"  />
+         <xsd:element name="estado" type="tns:Estado_Type"  />
+		 <xsd:element name="nombreCompleto" type="tns:NombreCompleto_Type"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   
+      
+   <xsd:simpleType name="IdRemedy_Type">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   
+   <xsd:simpleType name="Email_Type">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   
+   <xsd:simpleType name="Empresa_Type">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   
+   <xsd:simpleType name="Estado_Type">
+    <xsd:restriction base="xsd:string">
+     <xsd:enumeration value="Proposed"/>
+     <xsd:enumeration value="Enabled"/>
+     <xsd:enumeration value="Offline"/>
+     <xsd:enumeration value="Obsolete"/>
+     <xsd:enumeration value="Archive"/>
+     <xsd:enumeration value="Delete"/>
+    </xsd:restriction>
+   </xsd:simpleType>
+   
+   <xsd:simpleType name="NombreCompleto_Type">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+    
+
+</xsd:schema>

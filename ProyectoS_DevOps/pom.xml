@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <properties>
+    <oracleHome>C:\Oracle\Middleware\Oracle_Home</oracleHome>
+    <oracleServerUrl>http://localhost:7001</oracleServerUrl>
+    <oracleUsername>weblogic</oracleUsername>
+    <oraclePassword>weblogic1</oraclePassword>
+  </properties>
+  <parent>
+    <groupId>com.oracle.servicebus</groupId>
+    <artifactId>sbar-project-common</artifactId>
+    <version>12.2.1-0-0</version>
+  </parent>
+  <groupId>ProyectoS_DevOps_App</groupId>
+  <artifactId>ProyectoS_DevOps</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>sbar</packaging>
+  <description></description>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>smartbear-sweden-plugin-repository</id>
+      <url>http://www.soapui.org/repository/maven2</url>
+    </pluginRepository>
+  </pluginRepositories>
+  
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>com.smartbear.soapui</groupId>
+        <artifactId>soapui-maven-plugin</artifactId>
+        <version>5.3.0</version>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <id>soapui-tests</id>
+            <configuration>
+              <projectFile>E:/Arturo/Synopsis/DevOps/Demo/Test/TestServiceBus-soapui-project.xml</projectFile>
+              <outputFolder>E:/Arturo/Synopsis/DevOps/Demo/Test/target/</outputFolder>
+              <junitReport>true</junitReport>
+              <exportAll>true</exportAll>
+              <printReport>true</printReport>
+              <settingsFile>soapui-settings.xml</settingsFile>
+            </configuration>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+       <plugin>
+        <groupId>com.oracle.adf.plugin</groupId>
+        <artifactId>ojdeploy</artifactId>
+        <version>12.2.1-0-0</version>
+        <configuration>
+          <ojdeploy>
+            ${oracleHome}/jdeveloper/jdev/bin/ojdeploy.exe
+          </ojdeploy>
+          <workspace>
+            ${basedir}/../ProyectoS_DevOps_App.jws
+          </workspace>
+          <project>
+            ProyectoS
+          </project>
+          <profile>
+            ProyectoS
+          </profile>
+          <outputfile>
+            ${project.build.directory}/${project.build.finalName}.jar
+          </outputfile>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    
+    </plugins>
+    </build>
+</project>
