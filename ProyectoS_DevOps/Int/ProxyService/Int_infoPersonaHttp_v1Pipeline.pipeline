@@ -19,7 +19,7 @@
                     <con1:userNsDecl prefix="inf" namespace="http://integracion.osb.com/services/infoPersona"/>
                 </con:context>
                 <con:actions>
-                    <con2:assign varName="infoPersonaInt">
+                    <con2:assign varName="infoPersonaIntegracion">
                         <con1:id>_ActionId-N3f57fedc.1a75c4ad.0.15eda385d49.N7ff5</con1:id>
                         <con2:expr>
                             <con1:xqueryTransform>
@@ -36,7 +36,7 @@
                             <con1:xpathText>.</con1:xpathText>
                         </con2:location>
                         <con2:expr>
-                            <con1:xqueryText>$infoPersonaInt</con1:xqueryText>
+                            <con1:xqueryText>$infoPersonaIntegracion</con1:xqueryText>
                         </con2:expr>
                     </con2:replace>
                 </con:actions>
